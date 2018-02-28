@@ -1,0 +1,44 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>MyMaterial</span>
+
+    <span class="example-spacer"></span>
+
+    <!-- <button mat-button>About</button>
+    <button mat-button>Services</button>
+    <button mat-button>Contact</button> -->
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="text-align:center">
+<h2>
+    Select Country
+</h2>
+
+<form class="example-form" (ngSubmit)="getTheAmount()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Amount" value="$ " [(ngModel)]="amount">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="" value="New Zealand (NZL)" disabled="true">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+      [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of combination" [value]="option">
+        {{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <!-- <button mat-button type="submit" class="btn btn-primary" >Convert</button> -->
+  <!-- <input type="submit" class="btn" [value]="btnText" (click)="getTheAmount()"> -->
+  <input type="submit" class="btn" [value]="btnText">
+
+</form>
+<div>
+</div>
+
+</div>
