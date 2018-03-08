@@ -10,3 +10,4 @@ Get the currency of the day.
 # currencytoday2
 # currencytoday2
 # currencytoday2
+# currencytoday2
