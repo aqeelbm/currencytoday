@@ -6,7 +6,7 @@ import { Http } from '@angular/http';
 import { ReferenceService } from './services/reference.service';
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 // import { MatAutocompleteModule, MatInputModule } from '@angular/material';
 
 
@@ -17,12 +17,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule, HttpModule, MaterialModule,
    // MatInputModule,
-   ReactiveFormsModule,
+   // ReactiveFormsModule,
    // MatAutocompleteModule,
    BrowserAnimationsModule,
    FormsModule,
    HttpModule
   ],
+  exports:[FormsModule],
   providers: [ReferenceService],
   bootstrap: [AppComponent]
 })

@@ -1,44 +1,62 @@
+
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>MyMaterial</span>
-
+    <span><h1>CurrencyToday</h1></span>
     <span class="example-spacer"></span>
-
-    <!-- <button mat-button>About</button>
-    <button mat-button>Services</button>
-    <button mat-button>Contact</button> -->
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div class="container">
+
 <div style="text-align:center">
-<h2>
+<h4>
     Select Country
-</h2>
+</h4>
 
-<form class="example-form" (ngSubmit)="getTheAmount()">
+<form #frm="ngForm" (ngSubmit)="getTheAmount(frm)">
+  <!-- <mat-form-field class="example-full-width">
+    <input matInput type="text" class="form-control"
+    placeholder="Amount" value="New Zealand (NZL)  $ 1" [(ngModel)]="currency.amnt"
+    name="third"
+    [disabled]
+    >
+  </mat-form-field> -->
+
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Amount" value="$ " [(ngModel)]="amount">
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input matInput placeholder="" value="New Zealand (NZL)" disabled="true">
+    <input matInput type="text" class="form-control"
+    placeholder="New Zealand (NZL)  $"
+    value=""
+    [(ngModel)]="currency.amnt"
+    name="third"
+    >
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
-      [matAutocomplete]="auto">
+    <input matInput type="text" class="form-control"
+     placeholder="Pick one"
+     aria-label="Number"
+     [(ngModel)]="currency.dest"
+     name="first"
+     [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of combination" [value]="option">
+      <mat-option *ngFor="let option of combination" [value]="option" name="second">
+         <!-- [matAutocomplete]="auto" -->
         {{ option }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 
-  <!-- <button mat-button type="submit" class="btn btn-primary" >Convert</button> -->
-  <!-- <input type="submit" class="btn" [value]="btnText" (click)="getTheAmount()"> -->
-  <input type="submit" class="btn" [value]="btnText">
-
+  <!-- <input type="submit" class="btn" [value]="btnText"> -->
+  <button type="submit" [disabled]="frm.invalid"> Get Amount </button>
 </form>
+
+<div class="jumbotron" *ngIf="gotThevalue">
+  <h3>The currency of New Zealand with {{ theCountry }} is: </h3> <h2> {{ amount }} </h2>
+</div>
+
 <div>
+</div>
+
 </div>
 
 </div>

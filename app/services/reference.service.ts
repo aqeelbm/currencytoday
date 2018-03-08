@@ -21,12 +21,10 @@ export class ReferenceService {
       }
     }
 
-    getCountries(): Observable<any> {
+    getCountriesWithCode(): Observable<any> {
       try {
-         // return this.http.get('https://free.currencyconverterapi.com/api/v5/countries')   // web service API. its pointing to http://localhost:4200/assets/service.json
-         // return this.http.get('https://api.fixer.io/latest?symbols=USD,GBP')
-         return this.http.get('./assets/service.json')
-              .map(res => {
+         return this.http.get('https://free.currencyconverterapi.com/api/v5/countries')
+               .map(res => {
                 return res;
               })
               .catch(this.handleError);
@@ -38,5 +36,12 @@ export class ReferenceService {
         const errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server   error';
         return Observable.throw(error);
+    }
+
+    getCurrentCurrency(countryCode) {
+      var u = 'https://free.currencyconverterapi.com/api/v5/convert?q=NZD_'+countryCode+'&compact=y';
+      console.log(u);
+      return this.http.get(u).map(res => {
+        return res;});
     }
 }
